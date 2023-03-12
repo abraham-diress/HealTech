@@ -16,15 +16,18 @@ class _BodyState extends State<Body> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Provides easily accessible information!",
+      "text":
+          "Discover a World of Health Information at Your Fingertips - Accessible Anytime, Anywhere!",
       "image": "assets/images/splash_1.png"
     },
     {
-      "text": "Adequate information about doctors",
+      "text": "Find the Best Doctors and Facilities Near You - All"
+          " the Information You Need in One Place!",
       "image": "assets/images/splash_2.png"
     },
     {
-      "text": "Search for doctors or hospitals according",
+      "text": "Effortlessly Search for Doctors and Hospitals According to"
+          " Your Needs - Your Health, Your Choice!",
       "image": "assets/images/splash_3.png"
     },
   ];
