@@ -4,18 +4,25 @@ import 'package:mini_project_mob_dev/components/form_error.dart';
 import 'package:mini_project_mob_dev/helper/keyboard.dart';
 import 'package:mini_project_mob_dev/screens/forgot_password/forgot_password_screen.dart';
 import 'package:mini_project_mob_dev/screens/login_success/login_success_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 
 import '../../../components/default_button.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import '../../../auth.dart';
+
 
 class SignForm extends StatefulWidget {
+
   @override
   _SignFormState createState() => _SignFormState();
 }
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
+  
   String? email;
   String? password;
   bool? remember = false;
@@ -33,6 +40,14 @@ class _SignFormState extends State<SignForm> {
       setState(() {
         errors.remove(error);
       });
+  }
+ final emailController = TextEditingController();
+ final passwordController = TextEditingController();
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -88,6 +103,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      controller : passwordController,
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
@@ -121,6 +137,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildEmailFormField() {
     return TextFormField(
+      controller : emailController,
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
@@ -151,4 +168,16 @@ class _SignFormState extends State<SignForm> {
       ),
     );
   }
+   Future<void> signInWithEmaliAndPassword() async{
+    try{
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(), 
+        password: passwordController.text.trim(),
+        ); 
+    } on FirebaseAuthException catch (e) {
+          print(e);
+        }
+    
+  }
 }
+
