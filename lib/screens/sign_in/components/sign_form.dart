@@ -4,18 +4,25 @@ import 'package:mini_project_mob_dev/components/form_error.dart';
 import 'package:mini_project_mob_dev/helper/keyboard.dart';
 import 'package:mini_project_mob_dev/screens/forgot_password/forgot_password_screen.dart';
 import 'package:mini_project_mob_dev/screens/login_success/login_success_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 
 import '../../../components/default_button.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import '../../../auth.dart';
+
 
 class SignForm extends StatefulWidget {
+
   @override
   _SignFormState createState() => _SignFormState();
 }
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
+  
   String? email;
   String? password;
   bool? remember = false;
@@ -33,6 +40,14 @@ class _SignFormState extends State<SignForm> {
       setState(() {
         errors.remove(error);
       });
+  }
+ final emailController = TextEditingController();
+ final passwordController = TextEditingController();
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -71,16 +86,32 @@ class _SignFormState extends State<SignForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
-            text: "Continue",
-            press: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                // if all are valid then go to success screen
-                KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              }
-            },
-          ),
+  text: "Continue",
+  press: () async {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      // if all are valid then go to success screen
+      KeyboardUtil.hideKeyboard(context);
+
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+        Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          addError(error: 'No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          addError(error: 'Wrong password provided for that user.');
+        } else {
+          print(e);
+        }
+      }
+    }
+  },
+),
+
         ],
       ),
     );
@@ -88,6 +119,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      controller : passwordController,
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
@@ -121,6 +153,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildEmailFormField() {
     return TextFormField(
+      controller : emailController,
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
@@ -151,4 +184,6 @@ class _SignFormState extends State<SignForm> {
       ),
     );
   }
+  
 }
+
