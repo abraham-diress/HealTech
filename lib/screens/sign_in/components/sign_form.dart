@@ -86,16 +86,32 @@ class _SignFormState extends State<SignForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
-            text: "Continue",
-            press: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                // if all are valid then go to success screen
-                KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              }
-            },
-          ),
+  text: "Continue",
+  press: () async {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      // if all are valid then go to success screen
+      KeyboardUtil.hideKeyboard(context);
+
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+        Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          addError(error: 'No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          addError(error: 'Wrong password provided for that user.');
+        } else {
+          print(e);
+        }
+      }
+    }
+  },
+),
+
         ],
       ),
     );
@@ -168,16 +184,6 @@ class _SignFormState extends State<SignForm> {
       ),
     );
   }
-   Future<void> signInWithEmaliAndPassword() async{
-    try{
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(), 
-        password: passwordController.text.trim(),
-        ); 
-    } on FirebaseAuthException catch (e) {
-          print(e);
-        }
-    
-  }
+  
 }
 

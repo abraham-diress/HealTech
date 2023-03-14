@@ -3,6 +3,8 @@ import 'package:mini_project_mob_dev/components/custom_surfix_icon.dart';
 import 'package:mini_project_mob_dev/components/default_button.dart';
 import 'package:mini_project_mob_dev/components/form_error.dart';
 import 'package:mini_project_mob_dev/screens/complete_profile/complete_profile_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -19,6 +21,10 @@ class _SignUpFormState extends State<SignUpForm> {
   String? conform_password;
   bool remember = false;
   final List<String?> errors = [];
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  
+
+  
 
   void addError({String? error}) {
     if (!errors.contains(error))
@@ -48,14 +54,30 @@ class _SignUpFormState extends State<SignUpForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
-            text: "Continue",
-            press: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                // if all are valid then go to success screen
-                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-              }
-            },
+          text: "Continue",
+           press: () async {
+            if (_formKey.currentState!.validate()) {
+           _formKey.currentState!.save();
+            try {
+            final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+            email: email!,
+            password: password!,
+      );
+      if (userCredential.user != null) {
+        Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+},
+
           ),
         ],
       ),
