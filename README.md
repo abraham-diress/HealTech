@@ -4,7 +4,7 @@ Flutter Mini project 2
 
 ## Getting started
 
-This project is a startingpoint for Flutterapplication
+This project is a starting point for Flutterapplication
 
 A few resouces to get started if this is your first time doing Flutter project
 [Lab: Write first Flutter app](https://docs.flutter.dev/get-started/colab)
