@@ -15,16 +15,14 @@ Git
 Installation
 To get started with the project, clone the repository using Git. Open your terminal and enter the following command:
 
-bash
-Copy code
+
 git clone https://github.com/your-username/your-repository.git
 Replace your-username and your-repository with your own GitHub username and the name of the repository.
 
 Next, navigate to the project directory using the cd command:
 
-bash
-Copy code
-cd your-repository
+```cd your-repository```
+
 Running the Project
 Now that you're in the project directory, you can run the project using the flutter run command:
 
