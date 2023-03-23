@@ -1,4 +1,4 @@
-# HealTechProject ⚕️
+# HealTech ⚕️
 
 ### Mini Project
 
