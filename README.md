@@ -1,58 +1,24 @@
-# HealTech ⚕️
+# HealTech
+HealTech is a mobile application built using Flutter and Firebase for auth that connects patients with doctors and hospitals in Kigali, Rwanda. It is designed to improve access to healthcare in the region and simplify the process of finding medical care.
 
-### Mini Project
+## Features
+This application has been developed to provide the following features:
 
+- Search for doctors and hospitals by name or specialty.
+- View doctor and hospital profiles, including ratings and reviews.
+- Receive notifications for upcoming appointments and reminders for medication schedules.
+- Secure login and registration using Firebase authentication.
 
-Welcome to our Flutter project! This is a brief guide on how to run the project on your local machine.
+## Deployment
+The application can be deployed on both iOS and Android devices. To deploy the application, follow the steps below:
 
-Prerequisites
-To run this project, you need to have the following software installed on your computer:
+- Clone the repository to your local system.
+- Configure your Firebase project and download the Google Services configuration file.
+- Add the configuration file to your project.
+- Build and run the application on your device or emulator.
 
-- Flutter SDK (version 2.2.3 or higher)
-- Dart SDK (version 2.13.4 or higher)
-- Android Studio or Xcode (depending on your platform)
-- Git
+## Usage
+Using the application is simple and straightforward. To find doctors and hospitals, simply search by name or specialty. View the profiles of doctors and hospitals to see ratings and reviews from other patients. Receive notifications for upcoming appointments and medication schedules.
 
-Installation
-To get started with the project, clone the repository using Git. Open your terminal and enter the following command:
-
-
-```git clone https://github.com/your-username/your-repository.git```
-Replace your-username and your-repository with your own GitHub username and the name of the repository.
-
-Next, navigate to the project directory using the cd command:
-
-```cd your-repository```
-
-Running the Project
-Now that you're in the project directory, you can run the project using the flutter run command:
-
-```flutter run```
-This will launch the app on an emulator or on your connected device. If you want to run the app on a specific device, use the -d flag followed by the device ID:
-
-
-```flutter run -d device-id```
-Replace device-id with the ID of your device. You can get the list of available devices by running the flutter devices command.
-
-Contributers:
-- Abraham Diress
-- Alfred Kabba Swaray
-- David Soro
-
-Refreneces: 
-- https://flutter.dev/
-- https://firebase.google.com/docs/guides
-- https://www.youtube.com/@NetNinja
-- https://www.youtube.com/@FlutterMapp
-
-License
-This project is licensed under the MIT License. Feel free to use and modify the code as you see fit.
-
-
-
-
-
-
-
-
-
+## Conclusion
+HealTech is a great resource for improving access to healthcare in Kigali, Rwanda. The application is easy to use and provides a simple and effective way to find medical care. If you have any questions or issues, feel free to reach out to the developer. We hope HealTech helps you find the medical care you need!
