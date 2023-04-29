@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   firebase_auth: ^4.2.10
   firebase_core: ^2.7.1
+  cloud_firestore: ^4.5.3
   
   # if you are using latest flutter please update your flutter_svg package to ^0.18.*
   flutter_svg: ^0.22.0 # help us to use SVG in our app

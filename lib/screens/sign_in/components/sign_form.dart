@@ -10,6 +10,7 @@ import '../../../components/default_button.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import '../../../auth.dart';
+import '../../doctor_page/doctor_screen.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -95,7 +96,7 @@ class _SignFormState extends State<SignForm> {
                     email: emailController.text.trim(),
                     password: passwordController.text.trim(),
                   );
-                  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                  Navigator.pushNamed(context,  DoctorScreen.routeName);
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'user-not-found') {
                     addError(error: 'No user found for that email.');

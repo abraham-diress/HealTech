@@ -4,8 +4,9 @@ import 'package:mini_project_mob_dev/screens/forgot_password/forgot_password_scr
 import 'package:mini_project_mob_dev/screens/login_success/login_success_screen.dart';
 import 'package:mini_project_mob_dev/screens/sign_in/sign_in_screen.dart';
 import 'package:mini_project_mob_dev/screens/splash/splash_screen.dart';
-
+import 'screens/doctor_page/doctor_screen.dart';
 import 'screens/sign_up/sign_up_screen.dart';
+
 
 // We use name route
 // All our routes will be available here
@@ -16,4 +17,6 @@ final Map<String, WidgetBuilder> routes = {
   LoginSuccessScreen.routeName: (context) => LoginSuccessScreen(),
   SignUpScreen.routeName: (context) => SignUpScreen(),
   CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
+  DoctorScreen.routeName: (context) => DoctorScreen(),
+
 };
