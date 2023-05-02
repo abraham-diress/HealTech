@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project_mob_dev/components/default_button.dart';
-import 'package:mini_project_mob_dev/size_config.dart';
+import 'package:HealTech/components/default_button.dart';
+import 'package:HealTech/size_config.dart';
 
 class Body extends StatelessWidget {
   @override

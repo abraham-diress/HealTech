@@ -1,5 +1,6 @@
 {
   "java.dependency.packagePresentation": "hierarchical",
   "cmake.sourceDirectory": "${workspaceFolder}/linux",
-  "editor.fontFamily": "Kulim Park"
+  "editor.fontFamily": "Kulim Park",
+  "java.configuration.updateBuildConfiguration": "interactive"
 }

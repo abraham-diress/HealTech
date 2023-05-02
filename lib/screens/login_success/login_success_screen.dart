@@ -1,45 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mini_project_mob_dev/screens/sign_in/sign_in_screen.dart';
+import 'package:HealTech/screens/sign_in/sign_in_screen.dart';
+import 'package:HealTech/screens/hospital/hospital_screen.dart';
+import 'package:HealTech/screens/doctor/doctor_screen.dart';
+import 'package:HealTech/screens/profile/profile_screen.dart';
+import 'dart:math';
 
-class LoginSuccessScreen extends StatelessWidget {
+class LoginSuccessScreen extends StatefulWidget {
   static String routeName = "/login_success";
+
+  LoginSuccessScreen({required Key key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _LoginSuccessScreen createState() => _LoginSuccessScreen();
+}
+
+class _LoginSuccessScreen extends State<LoginSuccessScreen> {
+  int _selectedIndex = 0;
+  final _random = Random();
+
+  List<Widget> _widgetOptions = <Widget>[
+    HomePage(),
+    DoctorScreen(),
+    ProfilePage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: SizedBox(),
-        title: Text("Login Success"),
+        title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Welcome,",
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 16),
-            Text(
-              "The main pages are under construction and will be in service very soon! (But still firebase works ;) )",
-              style: TextStyle(fontSize: 18),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 32),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.orange,
-                onPrimary: Colors.white,
-              ),
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushNamed(context, SignInScreen.routeName);
-              },
-              child: Text("Sign Out"),
-            ),
-          ],
-        ),
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_hospital),
+            label: 'Hospital',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Doctor',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue,
+        onTap: _onItemTapped,
       ),
     );
   }

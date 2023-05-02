@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project_mob_dev/components/no_account_text.dart';
-import 'package:mini_project_mob_dev/components/social_card.dart';
+import 'package:HealTech/components/no_account_text.dart';
+import 'package:HealTech/components/social_card.dart';
 import '../../../size_config.dart';
 import 'sign_in_form.dart';
 

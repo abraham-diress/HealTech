@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project_mob_dev/constants.dart';
-import 'package:mini_project_mob_dev/size_config.dart';
+import 'package:HealTech/constants.dart';
+import 'package:HealTech/size_config.dart';
 
 import 'otp_form.dart';
 

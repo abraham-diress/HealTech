@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project_mob_dev/constants.dart';
+import 'package:HealTech/constants.dart';
 
 import '../size_config.dart';
 

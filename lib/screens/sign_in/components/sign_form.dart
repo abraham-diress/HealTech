@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project_mob_dev/components/custom_surfix_icon.dart';
-import 'package:mini_project_mob_dev/components/form_error.dart';
-import 'package:mini_project_mob_dev/helper/keyboard.dart';
-import 'package:mini_project_mob_dev/screens/forgot_password/forgot_password_screen.dart';
-import 'package:mini_project_mob_dev/screens/login_success/login_success_screen.dart';
+import 'package:HealTech/components/custom_surfix_icon.dart';
+import 'package:HealTech/components/form_error.dart';
+import 'package:HealTech/helper/keyboard.dart';
+import 'package:HealTech/screens/forgot_password/forgot_password_screen.dart';
+import 'package:HealTech/screens/login_success/login_success_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../components/default_button.dart';

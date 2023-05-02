@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project_mob_dev/components/custom_surfix_icon.dart';
-import 'package:mini_project_mob_dev/components/default_button.dart';
-import 'package:mini_project_mob_dev/components/form_error.dart';
-import 'package:mini_project_mob_dev/screens/complete_profile/complete_profile_screen.dart';
+import 'package:HealTech/components/custom_surfix_icon.dart';
+import 'package:HealTech/components/default_button.dart';
+import 'package:HealTech/components/form_error.dart';
+import 'package:HealTech/screens/complete_profile/complete_profile_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../constants.dart';
